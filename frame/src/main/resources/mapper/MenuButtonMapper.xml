@@ -1,0 +1,43 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.coship.mapper.MenuButtonMapper">
+
+	<resultMap type="com.coship.entity.MenuButton" id="MenuButtonResultMap">
+        <id column="id" property="id"/>
+        <result column="mid" property="mId"/>
+        <result column="buttonDesc" property="buttonDesc"/>
+        <result column="rb_id" property="roleButton.id"/>
+        <result column="rb.mbid" property="roleButton.mbid"/>
+        <result column="rb.rid" property="roleButton.rid"/>
+    </resultMap>
+	
+    <select id="loadRoleMB" resultType="MenuButton">
+        select mb.id,mb.mid,mb.buttonPath,mb.buttonDesc from sys_role_button rb,sys_menu_button mb 
+        where rb.mbid = mb.id and rid=#{roleId}
+    </select>
+    
+    <select id="deleteRoleMB" parameterType="MenuButton">
+        delete from sys_role_button where rid=#{rId}
+        <if test="@Ognl@isNotEmpty(mId)">and mid = #{mId}</if>
+    </select>
+    
+    <select id="loadAllMB" resultType="MenuButton">
+        select mb.id,mb.mid,mb.buttonPath,mb.buttonDesc from sys_menu_button mb 
+    </select>
+    
+    <select id="loadMenuButton" resultMap="MenuButtonResultMap" parameterType="Map">
+        SELECT mb.id,mb.mid,mb.buttonDesc,rb.id as rb_id,rb.rid,rb.mbid FROM `sys_menu_button` mb 
+		LEFT JOIN sys_role_button rb on mb.id = rb.mbid
+		and rb.rid = #{rid} where mb.mid = #{mid}; 
+    </select>
+    
+    <insert id="insertRoleMBs">
+      INSERT INTO sys_role_button(rid,mid,mbid)
+      VALUES
+      <foreach collection="rbs" item="rb" separator=",">
+      (#{rb.rId},#{rb.mId},#{rb.mbId})
+      </foreach>
+     </insert>
+</mapper>

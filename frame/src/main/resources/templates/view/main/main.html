@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" th:href="@{/css/public.css}" media="all"/>
+    <style>
+        #one,#two,#three,#four,#five,#six,#seven{
+            display: inline;
+            font-size: 15px;
+            left: 100px;
+            position: absolute;
+
+        }
+        #eight{
+            display: inline;
+            font-size: 15px;
+            left: 370px;
+            position: absolute;
+        }
+        .span{
+            position: absolute;
+            padding-left:30px ;
+            font-size: 15px;
+        }
+        .day{
+          margin-left:20px;
+        }
+        li{
+            float: left;
+        }
+        #big{
+            width: 1012px;
+            height: 370px;
+            border: 1px solid rgb(232,232,232);
+            position: relative;
+            top: 240px;
+            left: 100px;
+            border-radius: 2px;
+        }
+        #div{
+
+            width: 972px;
+            height: 295px;
+            border: 1px solid rgb(232,232,232);
+            position: relative;
+            top: 45px;
+            left: 20px;
+            border-radius: 3px;
+            color:rgb(51,51,51);
+        }
+        .pai{
+            position: absolute;
+            top: 10px;
+            font-size: 17px;
+            left: 20px;
+        }
+        .container{
+          position: absolute;
+        }
+        .work{
+            margin-top: 10px;
+            width: 480px;
+            height: 160px;
+            border: 1px solid rgb(232,232,232);
+            float: left;
+            border-radius: 3px;
+            background: rgb(65,178,166);
+        }
+        #work2{
+            position: absolute;
+            left: 632px;
+        }
+        #work1{
+            position: absolute;
+            left: 100px;
+        }
+        .img{
+            margin-top: 30px;
+            margin-left: 50px;
+        }
+        .num{
+            margin-left:45px;
+            margin-top: 15px;
+            color: #fff;
+        }
+        .total{
+            margin-left:200px;
+            margin-top: 30px;
+            color: #fff;
+        }
+        .desc{
+            margin-left:200px;
+            margin-top: -90px;
+            color: #fff;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="work" id="work1">
+        <div class="row">
+            <div class="total"><h3>container</h3></div>
+        </div>
+    </div>
+    <div class="work" id="work2">
+        <div class="row">
+            <div class="total"><h3>container</h3></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

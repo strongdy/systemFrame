@@ -1,0 +1,34 @@
+package com.coship.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import com.coship.entity.DataGridView;
+import com.coship.entity.Role;
+import com.coship.entity.RoleMenu;
+
+@Mapper
+public interface RoleMapper {
+    //加载所有角色
+    List<Role> loadAllRole(Role role);
+     //添加角色
+    int insertRole(Role role);
+    //修改角色
+    int updateRole(Role role);
+    //删除角色
+    int deleteRoleId(Integer roleid);
+    //删除角色与菜单的关系
+    int deleteRoleMenuId(Integer roleid);
+    //删除角色与用户的管理
+    int deleteRoleUserId(Integer roleid);
+    //按照角色id加载该角色的菜单
+    DataGridView initRoleMenuTreeJson(Integer roleid);
+    //保存角色与菜单的关系
+    void saveRoleMenu(RoleMenu roleMenu);
+    //添加角色
+    void insertRoleMenu(@Param("rid")Integer rid, @Param("mid")Integer mid);
+    //根据用户id查询对应角色列表
+	List<Role> loadUserRole(Integer userId);
+}
